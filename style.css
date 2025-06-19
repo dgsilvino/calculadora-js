@@ -1,74 +1,106 @@
-*{
-    margin:0;
-    padding: 0;
-    box-sizing: border-box;
+:root {
+  --bg-color: #daf0ff;
+  --calculator-bg: #17181a;
+  --display-bg: #17181a;
+  --text-color: #ffffff;
+  --btn-black: #303136;
+  --btn-gray: #616161;
+  --btn-blue: #005db2;
+  --btn-equal: #1991ff;
 }
 
-body{
-    height: 100vh;
-    width: 100vw;
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    background-color: #DAF0FF;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-div{
-    background: linear-gradient(191.34deg, #17181A -4.95%, #17181A 103.74%);
-    width: 375px;
-    height: 568px;
-    border-radius: 35px;
-    padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(7, 1fr);
-
+body {
+  min-height: 100vh; /* Usamos min-height para evitar problemas em telas mobile */
+  width: 100%;
+  display: flex; /* MUDANÇA: Usamos Flexbox para centralizar */
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-color);
 }
 
-input{
-    font-size: 48px;
-    background-color: #17181A;
-    border: none;
-    outline: none;
-    text-align: right;
-    padding-top: 50px;
-    color: white;
-    grid-row: 1/3; 
-    grid-column: 1/5;  
-
+/* MUDANÇA: Agora usamos a classe .calculator em vez do seletor global 'div' */
+.calculator {
+  background: linear-gradient(191.34deg, #17181a -4.95%, #17181a 103.74%);
+  width: 375px;
+  /* MUDANÇA: A altura agora é automática, baseada no conteúdo */
+  border-radius: 35px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 14px; /* Adicionamos um espaçamento entre os botões */
+  grid-template-areas:
+    "display display display display"
+    "display display display display"
+    "clear invert op-divide op-multiply"
+    "num-7 num-8 num-9 op-subtract"
+    "num-4 num-5 num-6 op-add"
+    "num-1 num-2 num-3 op-equal"
+    "num-0 num-0 dot op-equal";
 }
 
-button:hover{
-    opacity: 0.7;
+.display {
+  grid-area: display;
+  font-size: 48px;
+  background-color: var(--display-bg);
+  border: none;
+  outline: none;
+  text-align: right;
+  padding: 20px;
+  color: var(--text-color);
+  /* Removemos o padding-top e grid-row/column */
 }
 
-button{
-    font-size: 24px;
-    border: none;
-    margin: 7px;
-    border-radius: 10px;
-    cursor: pointer;
-    color: white;
+.btn {
+  /* MUDANÇA: Criamos uma classe base para todos os botões */
+  font-size: 24px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: var(--text-color);
+  height: 65px; /* Altura fixa para os botões */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.black-button{
-    background-color: #303136;
+.btn:hover {
+  opacity: 0.8;
 }
 
-.blue-button{
-    background-color: #005DB2;
+.black-button {
+  background-color: var(--btn-black);
+}
+.gray-button {
+  background-color: var(--btn-gray);
+}
+.blue-button {
+  background-color: var(--btn-blue);
 }
 
-.equal{
-    background-color: #1991FF;
-    grid-row: 6/8;
-    grid-column: 4/5;
+.equal {
+  grid-area: op-equal;
+  background-color: var(--btn-equal);
+  height: auto; /* A altura se ajusta ao espaço do grid */
 }
 
-.gray-button{
-    background-color: #616161;
+.zero {
+  grid-area: num-0;
 }
 
-.zero{
-    grid-column: 1/3;
+/* Atribuindo os botões às áreas do grid (opcional, mas bom para organização) */
+[data-action="clear"] {
+  grid-area: clear;
 }
+[data-action="invert"] {
+  grid-area: invert;
+}
+[data-value="/"] {
+  grid-area: op-divide;
+}
+/* ... e assim por diante para todos os outros botões */
