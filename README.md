@@ -17,8 +17,7 @@ Este projeto é uma calculadora funcional e visualmente atraente, desenvolvida c
 
 O desenvolvimento focou em boas práticas de programação, incluindo a separação de responsabilidades (HTML, CSS, JS), manipulação eficiente do DOM e gerenciamento de estado para um fluxo de cálculo natural.
 
-![Screenshot da Calculadora](https://i.imgur.com/eBwF4oF.png)
-*(Dica: Sugiro que você tire um print da sua calculadora e substitua o link da imagem acima para mostrar sua versão!)*
+![Screenshot da Calculadora](screenshot-calculadora.png)
 
 ## ✨ Features
 
