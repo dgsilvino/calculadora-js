@@ -1,5 +1,3 @@
-// script.js (Versão Final e Corrigida)
-
 document.addEventListener("DOMContentLoaded", () => {
   // --- Seletores do DOM ---
   const display = document.querySelector(".display");
